@@ -3,7 +3,8 @@ import React from "react";
 import { hot } from 'react-hot-loader/root';
 import axios from 'axios';
 import API_KEY from '../../../config.js';
-import SearchBar from './SearchBar'
+import SearchBar from './SearchBar';
+import BookList from './BookList';
 
 class App extends React.Component {
   constructor () {
@@ -27,6 +28,7 @@ class App extends React.Component {
     return (
       <div>
         < SearchBar handleFormSubmit={this.handleSearch}/>
+        < BookList books={this.state.list}/>
       </div>
     )
   }
