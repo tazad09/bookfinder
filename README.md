@@ -1,7 +1,5 @@
 # bookfinder
-
-Empty project.
-
+Find a Book
 ## Building and running on localhost
 
 First install dependencies:
