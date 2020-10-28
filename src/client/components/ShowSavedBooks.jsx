@@ -1,19 +1,7 @@
 import React from 'react';
-import image from './image.png';
-
-const BookList = ({books, handleSave, bookList, getBooks}) => {
-
-  console.log(books);
 
 
-  let renderedSavedBooks = bookList.map((item) => {
-    return (
-      <li>
-        <ul>{item.author}</ul>
-        <ul>{item.title}</ul>
-      </li>
-    )
-  })
+const ShowSavedBooks = (props) => {
 
   let renderedList = books.map((book) => {
     return (
@@ -36,19 +24,12 @@ const BookList = ({books, handleSave, bookList, getBooks}) => {
             </div>
           </div>
         </div>
-        <button onClick={() => handleSave(book.id, book.volumeInfo.authors[0], book.volumeInfo.title)}> Save </button>
+        <button onClick={() => handleSave(book.volumeInfo.authors, book.volumeInfo.title, book.id)}> Save </button>
       </div>
 
     )
   })
-
-  return (
-    <div>
-      <button onClick={() => getBooks()}> Show Saved Books {renderedSavedBooks} </button>
-      <div> {renderedList} </div>
-    </div>
-  )
 }
 
 
-export default BookList;
+export default ShowSavedBooks;

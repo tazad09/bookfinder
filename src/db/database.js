@@ -4,24 +4,34 @@ mongoose.connect('mongodb://localhost/books', ()=> {
 })
 
 
-const bookSchema = mongoosel.Schema({
-
+const bookSchema = new mongoose.Schema({
+  id: String,
+  author: String,
+  title: String
 });
-
 
 let Book = mongoose.model('Book', bookSchema);
 
-const saveBook = (book) => {
+const getAllBooks = () => {
+  return Book.find({}).exec()
+}
 
+const saveBook = (id, author, title) => {
+  let doc = {
+    id: id,
+    author: author,
+    title: title
+  }
+  return Book.create(doc)
 };
 
 
-const deleteBook = () => {
-
-
+const deleteBook = (id) => {
+  return findByIdAndDelete(id).exec()
 };
 
 module.exports = {
   saveBook,
-  deleteBook
+  deleteBook,
+  getAllBooks
 }

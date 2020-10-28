@@ -6,6 +6,7 @@ import API_KEY from '../../../config.js';
 import SearchBar from './SearchBar';
 import BookList from './BookList';
 
+
 class App extends React.Component {
   constructor () {
     super();
@@ -13,16 +14,29 @@ class App extends React.Component {
       list: [],
       author: '',
       url: '',
-      title: ''
+      title: '',
+      id: '',
+      saved: []
     }
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.saveBook = this.saveBook.bind(this);
+    this.getBooks = this.getBooks.bind(this);
   }
 
-  handleClick (author, title) {
-    this.setState({author: author, title:title}, () => console.log(author, title))
+  //get the books from the database
+  getBooks() {
+    axios.get('/list')
+    .then(({data}) => this.setState({saved: data}))
+    .catch(err => console.log(err))
+  }
+  //save a book into the database
+  saveBook(id, author, title) {
+    return axios.post('/save', {id:id, author:author, title:title})
+    .then(() => alert('Saved!'))
+    .catch(err => console.log(err))
   }
 
+  //get the list of the books from api
   handleSearch (term) {
     let url =  'https://www.googleapis.com/books/v1/volumes?q='+term+'&key='+API_KEY;
     axios.get(url)
@@ -34,7 +48,12 @@ class App extends React.Component {
     return (
       <div>
         < SearchBar handleFormSubmit={this.handleSearch}/>
-        < BookList books={this.state.list} handleClick={this.handleClick}/>
+        < BookList
+          books={this.state.list}
+          handleSave={this.saveBook}
+          bookList={this.state.saved}
+          getBooks={this.getBooks}
+        />
       </div>
     )
   }
