@@ -1,16 +1,17 @@
 import React from 'react';
 import image from './image.png';
 
-const BookList = ({books, handleSave, bookList, getBooks}) => {
+const BookList = ({books, handleSave, bookList, getBooks, deleteBook}) => {
 
-  console.log(books);
-
+  console.log(bookList)
 
   let renderedSavedBooks = bookList.map((item) => {
+    console.log(item.id)
     return (
       <li>
         <ul>{item.author}</ul>
         <ul>{item.title}</ul>
+        <button onClick={() => deleteBook(item.id)}> Delete </button>
       </li>
     )
   })
@@ -44,7 +45,10 @@ const BookList = ({books, handleSave, bookList, getBooks}) => {
 
   return (
     <div>
-      <button onClick={() => getBooks()}> Show Saved Books {renderedSavedBooks} </button>
+      <div>
+        <button onClick={() => getBooks()}> Show Saved Books </button>
+        <div>{renderedSavedBooks}</div>
+      </div>
       <div> {renderedList} </div>
     </div>
   )

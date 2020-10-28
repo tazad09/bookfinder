@@ -28,6 +28,7 @@ app.post('/save', (req, res) => {
 })
 
 app.delete('/delete', (req, res) => {
+  console.log(req.body.id)
   db.deleteBook(req.body.id)
   .then(() => res.send(201))
   .catch(err => res.send(404))

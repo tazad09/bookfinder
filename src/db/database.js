@@ -27,7 +27,7 @@ const saveBook = (id, author, title) => {
 
 
 const deleteBook = (id) => {
-  return findByIdAndDelete(id).exec()
+  return Book.findOneAndDelete(id).exec()
 };
 
 module.exports = {

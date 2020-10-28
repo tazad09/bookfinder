@@ -12,15 +12,12 @@ class App extends React.Component {
     super();
     this.state = {
       list: [],
-      author: '',
-      url: '',
-      title: '',
-      id: '',
       saved: []
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.saveBook = this.saveBook.bind(this);
     this.getBooks = this.getBooks.bind(this);
+    this.deleteBook = this.deleteBook.bind(this);
   }
 
   //get the books from the database
@@ -44,6 +41,12 @@ class App extends React.Component {
     .catch(err => console.log(err))
   }
 
+  deleteBook (id) {
+    return axios.delete('/delete', {data:{id:id}})
+    .then(this.getBooks)
+    .catch((err) => console.log(err))
+  }
+
   render () {
     return (
       <div>
@@ -53,6 +56,7 @@ class App extends React.Component {
           handleSave={this.saveBook}
           bookList={this.state.saved}
           getBooks={this.getBooks}
+          deleteBook={this.deleteBook}
         />
       </div>
     )
