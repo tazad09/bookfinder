@@ -10,17 +10,23 @@ class App extends React.Component {
   constructor () {
     super();
     this.state = {
-      list: []
+      list: [],
+      author: '',
+      url: '',
+      title: ''
     }
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-
+  handleClick (author, title) {
+    this.setState({author: author, title:title}, () => console.log(author, title))
+  }
 
   handleSearch (term) {
     let url =  'https://www.googleapis.com/books/v1/volumes?q='+term+'&key='+API_KEY;
     axios.get(url)
-    .then(({data}) => console.log(data))
+    .then(({data}) => this.setState({list: data.items}))
     .catch(err => console.log(err))
   }
 
@@ -28,7 +34,7 @@ class App extends React.Component {
     return (
       <div>
         < SearchBar handleFormSubmit={this.handleSearch}/>
-        < BookList books={this.state.list}/>
+        < BookList books={this.state.list} handleClick={this.handleClick}/>
       </div>
     )
   }
