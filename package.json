@@ -11,7 +11,8 @@
     "build-dev": "webpack --mode development --watch",
     "build-prod": "webpack --mode production",
     "start": "webpack serve --hot --mode development",
-    "start-dev": "nodemon src/server/server.js"
+    "start-dev": "nodemon src/server/server.js",
+    "heroku-postbuild": "webpack"
   },
   "dependencies": {
     "axios": "^0.21.0",
