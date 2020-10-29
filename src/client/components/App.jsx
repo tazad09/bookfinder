@@ -5,6 +5,7 @@ import axios from 'axios';
 import API_KEY from '../../../config.js';
 import SearchBar from './SearchBar';
 import BookList from './BookList';
+import styles from './index.css'
 
 
 class App extends React.Component {
@@ -27,15 +28,15 @@ class App extends React.Component {
     .catch(err => console.log(err))
   }
   //save a book into the database
-  saveBook(id, author, title) {
-    return axios.post('/save', {id:id, author:author, title:title})
+  saveBook(id, author, title, image, link, description) {
+    return axios.post('/save', {id:id, author:author, title:title, image:image, link:link,description:description})
     .then(() => alert('Saved!'))
     .catch(err => console.log(err))
   }
 
   //get the list of the books from api
   handleSearch (term) {
-    let url =  'https://www.googleapis.com/books/v1/volumes?q='+term+'&key='+API_KEY;
+    let url =  'https://www.googleapis.com/books/v1/volumes?q='+term;
     axios.get(url)
     .then(({data}) => this.setState({list: data.items}))
     .catch(err => console.log(err))
@@ -49,15 +50,20 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
-        < SearchBar handleFormSubmit={this.handleSearch}/>
-        < BookList
-          books={this.state.list}
-          handleSave={this.saveBook}
-          bookList={this.state.saved}
-          getBooks={this.getBooks}
-          deleteBook={this.deleteBook}
-        />
+      <div id='wrapper'>
+        <h2> Find a Book</h2>
+        <div id="content">
+          < SearchBar handleFormSubmit={this.handleSearch}/>
+        </div>
+        <div id="books">
+          < BookList
+            books={this.state.list}
+            handleSave={this.saveBook}
+            bookList={this.state.saved}
+            getBooks={this.getBooks}
+            deleteBook={this.deleteBook}
+          />
+        </div>
       </div>
     )
   }

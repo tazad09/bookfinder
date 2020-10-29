@@ -21,8 +21,8 @@ app.get('/list', (req, res) => {
 })
 
 app.post('/save', (req, res) => {
-  console.log(req.body.author, req.body.title, req.body.id)
-  return db.saveBook(req.body.id, req.body.author, req.body.title)
+  console.log(req.body)
+  return db.saveBook(req.body.id, req.body.author, req.body.title, req.body.image, req.body.link, req.body.description)
   .then(() => res.sendStatus(201))
   .catch(err => res.sendStatus(404))
 })

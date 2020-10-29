@@ -1,0 +1,71 @@
+
+body {
+  margin: 0;
+  padding: 0;
+}
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+#content {
+  font-family: 'Noto Sans', sans-serif;
+}
+#books {
+  width: 90%;
+  margin-top: 30px;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.book {
+  background: hsla(0,0%,100%,.7);
+  border: 1px solid #bdbdbd;
+  border-radius: 3px;
+  box-shadow: 0 1px rgba(0,0,0,.05);
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+
+.book title {
+  width: 95%;
+  padding: 5px 0 0 15px;
+}
+.book title h3 {
+  font-size: 17px;
+  text-align: justify;
+  margin-bottom: 0;
+}
+
+.book title image {
+  text-decoration: none;
+  color: #6d4c41;
+}
+
+.book img-block {
+  width: 128px;
+  margin: 10px;
+}
+
+.book_img {
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.book_desc {
+  width: 60%;
+  padding: 18px 0 0 10px;
+}
+
+.book-field {
+  padding: 2px 5px 2px 5px;
+  cursor: pointer;
+}
+
+
