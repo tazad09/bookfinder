@@ -5,7 +5,8 @@ import axios from 'axios';
 import API_KEY from '../../../config.js';
 import SearchBar from './SearchBar';
 import BookList from './BookList';
-import styles from './index.css'
+import styles from './index.css';
+import { Redirect } from "react-router-dom";
 
 
 class App extends React.Component {
@@ -13,7 +14,8 @@ class App extends React.Component {
     super();
     this.state = {
       list: [],
-      saved: []
+      saved: [],
+      redirect: null
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.saveBook = this.saveBook.bind(this);
@@ -39,7 +41,10 @@ class App extends React.Component {
     let url =  'https://www.googleapis.com/books/v1/volumes?q='+term;
     axios.get(url)
     .then(({data}) => this.setState({list: data.items}))
-    .catch(err => console.log(err))
+    .catch((er) => {
+      alert('Nothing to show')
+      window.location.reload(false);
+    })
   }
 
   deleteBook (id) {

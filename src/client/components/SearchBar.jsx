@@ -18,6 +18,7 @@ class SearchBar extends React.Component {
     e.preventDefault();
     let value = this.state.term;
     this.props.handleFormSubmit(value)
+    this.setState({term:''})
   }
 
   render () {
@@ -25,7 +26,7 @@ class SearchBar extends React.Component {
       <div className="ui form">
         <div className="field">
           <form onSubmit={this.handleSubmit}>
-            <input placeholder="search book" type="text" onChange={this.handleChange} />
+            <input value={this.state.term} placeholder="search book" type="text" onChange={this.handleChange} />
             <button id> Search </button>
           </form>
         </div>
