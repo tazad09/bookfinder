@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 const db = require('../db/database')
 
 app.use(bodyParser.json());
@@ -34,4 +34,4 @@ app.delete('/delete', (req, res) => {
   .catch(err => res.send(404))
 })
 
-app.listen(port, () => console.log('Listening on port', port))
+app.listen(PORT, () => console.log('Listening on port', PORT))
