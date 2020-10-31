@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || "mongodb://54.86.130.45:27017/books", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://35.173.220.122:27017/books", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
