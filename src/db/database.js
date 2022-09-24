@@ -1,5 +1,7 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://nasa-api:WiIz1BRVqw7q24Bu@nasacluster.qynpril.mongodb.net/nasa?retryWrites=true&w=majority', {
+const mongoURL =  process.env.MONGO_URL
+mongoose.connect(process.env.MONGODB_URI || mongoURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

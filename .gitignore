@@ -4,6 +4,7 @@ coverage/
 !dist/index.html
 node_modules/
 *.log
+.env
 
 # OS generated files
 .DS_Store
