@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || "mongodb://35.173.220.122:27017/books", {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://nasa-api:WiIz1BRVqw7q24Bu@nasacluster.qynpril.mongodb.net/nasa?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

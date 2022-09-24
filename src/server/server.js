@@ -4,7 +4,7 @@ const path = require('path');
 const morgan = require('morgan');
 const app = express();
 //var dotEnv = require('dotenv').config();
-const PORT = process.env.PORT || 3000
+const PORT = 3000
 const db = require('../db/database')
 
 app.use(bodyParser.json());
